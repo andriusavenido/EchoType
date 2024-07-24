@@ -1,42 +1,86 @@
-#root {
-  max-width: 1280px;
+:root{
+  --logoColor: rgba(140,82,255,255);
+  --shadowColor: rgba(56,33,102,255);
+}
+/*Navbar Styles*/
+.navbar{
+  padding: 5px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  border-bottom: 2px solid #4a504d;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.navbar h2{
+  font-size: 35px;
+  margin: 20px;
+  color: var(--logoColor);
+  text-shadow:  3px 3px var(--shadowColor);
+  cursor: pointer;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar a{
+  margin: 0 auto;
+  text-decoration: none;
+  padding: 6px;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+a:hover{
+  color: var(--logoColor);
 }
 
-.card {
-  padding: 2em;
+.btn{
+  background-color: var(--logoColor);
+  border-radius: 10px;
+  border: none;
+  width: 100px;
+  height: 40px;
+  font-family: "IBM Plex Mono", monospace;
+}
+.btn:hover{
+  background-color: var(--shadowColor);
 }
 
-.read-the-docs {
-  color: #888;
+/* typer styles*/
+
+.timer{
+  margin: 20px auto 20px 50%;
 }
+.typerWrapper{
+  margin: 20px auto;
+  height: 400px;
+  max-width: 900px;
+  overflow: hidden;
+}
+
+#words{
+  margin: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  border-bottom: solid 2px;
+}
+
+.char{
+  font-size: 35px;
+  cursor:text;
+  user-select: none;
+  white-space: pre;
+}
+
+#typer-controls{
+  font-size: 20px;
+  display: flex;
+  margin: 0 20px;
+  gap: 20px;
+  justify-content: right;
+  align-items: center;
+}
+
+strong{
+  font-weight: 600;
+}
+
+

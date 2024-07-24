@@ -26,9 +26,5 @@ const typeRecordSchema = new Scheme({
     map:{
         type: String,
         required: true
-    },
-    date:{
-        type: Date,
-        required: true
     }
 });
