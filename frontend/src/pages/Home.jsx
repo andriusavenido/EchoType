@@ -1,4 +1,4 @@
-import UserTyper from "./UserTyper";
+import UserTyper from "../components/UserTyper";
 const Home = () => {
     return ( 
         <div className="home">

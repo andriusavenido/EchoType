@@ -1,6 +1,7 @@
 :root{
   --logoColor: rgba(140,82,255,255);
   --shadowColor: rgba(56,33,102,255);
+  --analogColor: #e252ff;
 }
 /*Navbar Styles*/
 .navbar{
@@ -9,7 +10,6 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  border-bottom: 2px solid #4a504d;
 }
 
 .navbar h2{
@@ -52,35 +52,68 @@ a:hover{
   margin: 20px auto;
   height: 400px;
   max-width: 900px;
-  overflow: hidden;
+  max-height: 250px;
 }
 
 #words{
+  height: 100%;
   margin: 10px;
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 20px;
   border-bottom: solid 2px;
-}
-
-.char{
-  font-size: 35px;
-  cursor:text;
-  user-select: none;
-  white-space: pre;
+  overflow: hidden;
 }
 
 #typer-controls{
+  height: 100%;
   font-size: 20px;
   display: flex;
   margin: 0 20px;
   gap: 20px;
-  justify-content: right;
+  justify-content: center;
   align-items: center;
 }
+.char {
+  font-size: 30px;
+  cursor:text;
+  user-select: none;
+  white-space: pre;
+  box-sizing: border-box;
+  color: var(--shadowColor);
+}
+.char.active{
+  border-bottom: 3px solid var(--logoColor);
+  animation: blinking 1s infinite ;
+  animation-timing-function: ease-in-out;
+}
+/*active blinling underline animation*/
+
+@keyframes blinking {
+    0%   { border-color:  var(--logoColor) }
+    100% { border-color:  #242424  }
+}
+
+.wrong{
+  color: var(--analogColor);
+}
+.right{
+  color: var(--logoColor);
+}
+#mistakes{
+  color: var(--analogColor);
+}
+
+
 
 strong{
   font-weight: 600;
+}
+
+#input-field{
+  opacity: 0;
+  z-index:-999;
+  position: absolute;
 }
 
 

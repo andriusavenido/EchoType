@@ -11,10 +11,6 @@ const typeRecordSchema = new Scheme({
         type: Number,
         required: true
     },
-    cpm:{
-        type: Number,
-        required: true
-    },
     wpm:{
         type: Number,
         required: true
