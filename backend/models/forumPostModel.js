@@ -2,24 +2,25 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const typeRecordSchema = new Schema({
+const forumPostSchema = new Schema({
     username:{
         type: String,
         required: true
     },
-    wpm:{
-        type: Number,
-        required: true
-    },
-    performance_string:{
+    title:{
         type: String,
         required: true
     },
-    word_bank:{
+    subtitle:{
+        type: String,
+        required: true
+    },
+    body:{
         type: String,
         required: true
     }
+    
 }, {timestamps: true});
 
-modules.exports = mongoose.model('TypeRecord',typeRecordSchema);
+modules.exports = mongoose.model('forumPost',forumPostSchema);
 
