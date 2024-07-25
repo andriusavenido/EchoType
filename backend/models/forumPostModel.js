@@ -20,7 +20,7 @@ const forumPostSchema = new Schema({
         required: true
     }
     
-}, {timestamps: true});
+}, {timestamps: true, collection: 'forums'});
 
-modules.exports = mongoose.model('forumPost',forumPostSchema);
+module.exports = mongoose.model('forumPost',forumPostSchema);
 

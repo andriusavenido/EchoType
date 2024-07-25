@@ -23,8 +23,8 @@ app.use('/api/typeRecords',typeRecordRoutes);
 //db connection
 mongoose.connect(db_URI)
     .then(() =>{
-        app.listen(4000, ()=>{
-            console.log('Connected to DB, listening on port 4000');
+        app.listen(process.env.PORT, ()=>{
+            console.log('Connected to DB, listening on port', process.env.PORT);
         });
     })
     .catch((error) =>{

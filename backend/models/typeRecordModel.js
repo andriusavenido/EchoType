@@ -19,7 +19,7 @@ const typeRecordSchema = new Schema({
         type: String,
         required: true
     }
-}, {timestamps: true});
+}, {timestamps: true, collection: 'typeRecords'});
 
-modules.exports = mongoose.model('TypeRecord',typeRecordSchema);
+module.exports = mongoose.model('TypeRecord',typeRecordSchema);
 
