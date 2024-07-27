@@ -40,7 +40,35 @@ const typeRecord_create = async (req,res) =>{
 
 const typeRecord_delete = async (req, res) =>{
     const {id} = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'No Record Exists'});
+    }
     
+    const typeRecord = await TypeRecord.findOneAndDelete({_id:id});
+
+    if (!typeRecord){
+        return res.status(400).json({error: 'No Record Exists'});
+    }
+    
+    res.status(200).json(typeRecord);
+}
+
+const typeRecord_update = async (req, res) =>{
+    const {id} = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({error: 'No Record Exists'});
+    }
+    
+    const typeRecord = await TypeRecord.findOneAndUpdate({_id:id},
+        { ...req.body});
+
+    if (!typeRecord){
+        return res.status(400).json({error: 'No Record Exists'});
+    }
+    
+    res.status(200).json(typeRecord);
 }
 
 //create a functions for specialized query (like only name and wpm needed)
@@ -48,5 +76,7 @@ const typeRecord_delete = async (req, res) =>{
 module.exports = {
     typeRecord_getAll,
     typeRecord_create,
-    typeRecord_getById
+    typeRecord_getById,
+    typeRecord_delete,
+    typeRecord_update
 }
