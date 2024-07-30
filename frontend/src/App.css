@@ -21,14 +21,20 @@
 }
 
 .navbar a{
-  margin: 0 auto;
+  margin: 0  ;
   text-decoration: none;
   padding: 6px;
-  color: #fff;
 }
 
-a:hover{
+.activePage{
   color: var(--logoColor);
+}
+
+a{
+  color:#fff;
+}
+a:hover{
+  color: var(--analogColor);
 }
 
 .btn{
@@ -42,6 +48,8 @@ a:hover{
 .btn:hover{
   background-color: var(--shadowColor);
 }
+
+
 
 /* typer styles*/
 
