@@ -6,7 +6,7 @@ const createToken = (_id) =>{
 }
 
 // login user
-const loginUser = async (req,res) =>{
+const user_login = async (req,res) =>{
     const { email, password } = req.body;
 
     try{
@@ -25,7 +25,7 @@ const loginUser = async (req,res) =>{
 
 //signup user
 
-const signUpUser = async (req,res) =>{
+const user_signUp = async (req,res) =>{
     const {email, password} = req.body;
     
     try{
@@ -42,4 +42,4 @@ const signUpUser = async (req,res) =>{
     }
 }
 
-module.exports = {loginUser, signUpUser};
+module.exports = {user_login,user_signUp};
