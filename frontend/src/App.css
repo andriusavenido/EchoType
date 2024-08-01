@@ -23,6 +23,7 @@
 .navbar a{
   margin: 0  ;
   text-decoration: none;
+  font-weight: 500;
   padding: 6px;
 }
 
@@ -112,8 +113,6 @@ a:hover{
   color: var(--analogColor);
 }
 
-
-
 strong{
   font-weight: 600;
 }
@@ -124,4 +123,25 @@ strong{
   position: absolute;
 }
 
+/*          Sign up page               */
+.signup{
+  margin: 30px auto;
+  width: 400px;
+  height: 410px;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 0 20px var(--logoColor);
 
+  overflow: hidden;
+}
+
+.signup h3{
+  font-size: 30px;
+  font-weight: bold;
+  text-shadow:  3px 3px var(--shadowColor);
+}
+
+.signup label{
+  margin: 30px;
+}

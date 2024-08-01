@@ -8,6 +8,7 @@ import Leaderboard from './pages/Leaderboard';
 import Options from './pages/Options';
 import About from './pages/About';
 import Forums from './pages/Forums';
+import Login from './pages/Login';
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
           <Route path ="/options" element = {<Options/>}></Route>
           <Route path ="/about" element = {<About/>}></Route>
           <Route path ="/forums" element = {<Forums/>}></Route>
+          <Route path ="/login" element = {<Login/>}></Route>
         </Routes>
       </div>
     </Router>

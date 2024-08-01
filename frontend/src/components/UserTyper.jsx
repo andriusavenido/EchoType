@@ -93,7 +93,7 @@ const UserTyper = () => {
         <>
         <div className="typerWrapper">
             <div id="words" onClick={ () => inputRef.current.focus()}>
-                <input type="text" id="input-field" ref = {inputRef} onChange ={handleChange}/>
+                <input type="text" id="input-field" ref = {inputRef} onChange ={handleChange} autoComplete="off"/>
                 { text.split("").map((char, index) =>{
                              return <span 
                                 className={`char ${index === charIndex ? "active ": ""}${letterState[index]}`}
