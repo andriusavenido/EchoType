@@ -32,8 +32,8 @@ const Navbar = () => {
                 <Link 
                      className= {`${activePage === 'account' ? 'activePage':''}`} 
                      onClick={() => setActivePage('account')}
-                to="">Account</Link>
-                <Link className= "btn sign-up" to="/sign-up">Sign Up</Link>
+                to="/Account">Account</Link>
+                <Link className= "btn sign-up" to="/sign-up" onClick={() => setActivePage('')}>Sign Up</Link>
             </div>
         </nav>
     );

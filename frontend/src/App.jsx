@@ -9,6 +9,7 @@ import Options from './pages/Options';
 import About from './pages/About';
 import Forums from './pages/Forums';
 import Login from './pages/Login';
+import Account from './pages/Account';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route path ="/about" element = {<About/>}></Route>
           <Route path ="/forums" element = {<Forums/>}></Route>
           <Route path ="/login" element = {<Login/>}></Route>
+          <Route path ="/account" element = {<Account/>}></Route>
         </Routes>
       </div>
     </Router>
