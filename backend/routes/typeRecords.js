@@ -11,6 +11,11 @@ const {
     
 } = require('../controllers/typeRecordController') ;
 
+const requireAuth = require('../middleware/requireAuth');
+
+//require auth for all workout routes
+router.use(requireAuth);
+
 //Get all records
 router.get('/', typeRecord_getAll);
 

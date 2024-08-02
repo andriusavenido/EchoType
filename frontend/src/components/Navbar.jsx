@@ -1,9 +1,11 @@
 import { useState } from "react";
 import {Link} from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Navbar = () => {
 
     const [activePage, setActivePage] = useState('');
+    const { user } = useAuthContext();
 
     return (  
         <nav className="navbar">
@@ -33,7 +35,7 @@ const Navbar = () => {
                      className= {`${activePage === 'account' ? 'activePage':''}`} 
                      onClick={() => setActivePage('account')}
                 to="/Account">Account</Link>
-                <Link className= "btn sign-up" to="/sign-up" onClick={() => setActivePage('')}>Sign Up</Link>
+                <Link className= "btn sign-up" to="/sign-up" onClick={() => setActivePage('')}>{ user ? user.username : 'Sign Up'}</Link>
             </div>
         </nav>
     );

@@ -1,11 +1,16 @@
 import { useLogout } from "../hooks/useLogout";
+import { useNavigate } from "react-router-dom";
 const Account = () => {
     const {logout} = useLogout();
+
+    const navigate = useNavigate();
 
     const handleClick = () =>{
         logout();
 
         console.log('Logged out!');
+
+        navigate('/');
     }
     
     return (  

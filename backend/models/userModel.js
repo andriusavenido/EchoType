@@ -10,6 +10,10 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
+    username:{
+        type: String,
+        required: true,
+    },
     password:{
         type: String,
         required: true,
@@ -19,11 +23,14 @@ const userSchema = new Schema({
 //static methods
 
 //signup
-userSchema.statics.signup = async function (email, password){
+userSchema.statics.signup = async function (email, username, password){
 
     //validate fields
-    if (!email || !password){
+    if (!email || !password || !username){
         throw Error('All fields must be filled');
+    }
+    if (!validator.isByteLength(username, {min:3, max:12})){
+        throw Error('Invalid Username: must be between 3-12 characters');
     }
     if (!validator.isEmail(email)){
         throw Error('Email is not valid');
@@ -38,12 +45,18 @@ userSchema.statics.signup = async function (email, password){
         throw Error('Email already in use');
     }
 
+    const userExists = await this.findOne({username});
+    
+    if (userExists){
+        throw Error('Username in use')
+    }
+
     //salt => adding random chars to pass word before hashing
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
     //add to db
-    const user = await this.create({email, password: hash});
+    const user = await this.create({email, username, password: hash});
 
     return user;
 }
