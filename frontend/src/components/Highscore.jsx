@@ -4,7 +4,7 @@ const  Highscore = (props) => {
 <section class="card">
   <header>
     <p>{props.username}</p>
-    <a href="#">Details</a>
+    <a href="#">Performed:</a>
   </header>
   <main>
     <p>42 <a href="#">ms</a></p>

@@ -189,7 +189,7 @@ strong{
 }
 
 
-/* From Uiverse.io by JohnnyCSilva */ 
+/* Forum post */ 
 .card {
   width: 100%;
   max-width: 1000px;
@@ -210,8 +210,8 @@ strong{
 }
 
 .img {
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   margin-left: 10px;
   border-radius: 10px;
   background: linear-gradient(#d7cfcf, #9198e5);
@@ -226,6 +226,7 @@ strong{
   width: calc(100% - 90px);
   margin-left: 10px;
   color: white;
+  height:95px;
   font-family: 'Poppins' sans-serif;
 }
 
@@ -237,6 +238,7 @@ strong{
 
 .span {
   font-size: 10px;
+  margin-right: 15px;
 }
 
 .h1 {
@@ -249,9 +251,9 @@ strong{
   font-weight: lighter;
 }
 
-/* From Uiverse.io by shadowmurphy */ 
+/* Highscore cards */ 
 .card {
-  width: 600px;
+  width: px;
   height: 150px;
   background: #262626;
   border-radius: 10px;
@@ -307,4 +309,66 @@ footer a {
 
 footer p {
   color: white;
+}
+
+/* From Uiverse.io by vinodjangid07 */ 
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgba(140, 82, 255, 255);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px rgba(56,33,102,255);
+  transition-duration: .3s;
+}
+
+.svg {
+  width: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: .3s;
+}
+
+.Btn:hover {
+  color: transparent;
+}
+
+.Btn:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+  box-shadow: 2px 2px 0px rgba(56,33,102,255);
+}
+
+/*Leadrboard*/
+.lb-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.forums{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
 }
