@@ -192,3 +192,187 @@ strong{
   text-align: center;
 }
 
+
+/* Forum post */ 
+.card {
+  width: 100%;
+  max-width: 1000px;
+  height: 100px;
+  background: #353535;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  backdrop-filter: blur(10px);
+  transition: 0.5s ease-in-out;
+  margin: 30px;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.img {
+  width: 75px;
+  height: 75px;
+  margin-left: 10px;
+  border-radius: 10px;
+  background: linear-gradient(#d7cfcf, #9198e5);
+}
+
+.card:hover > .img {
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(#9198e5, #712020);
+}
+
+.textBox {
+  width: calc(100% - 90px);
+  margin-left: 10px;
+  color: white;
+  height:95px;
+  font-family: 'Poppins' sans-serif;
+}
+
+.textContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.span {
+  font-size: 10px;
+  margin-right: 15px;
+}
+
+.h1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.p {
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+/* Highscore cards */ 
+.card {
+  width: px;
+  height: 150px;
+  background: #262626;
+  border-radius: 10px;
+  border: 1px solid #3F3F40;
+}
+
+a {
+  text-decoration: none;
+}
+
+header, footer, main {
+  display: flex;
+  align-items: center;
+}
+
+header {
+  justify-content: space-between;
+  margin: 20px;
+  color: #BDBFB7;
+}
+
+header a {
+  font-size: 15px;
+  cursor: pointer;
+  color: #BDBFB7
+}
+
+main {
+  justify-content: flex-start;
+  margin: 20px;
+}
+
+main p {
+  color: white;
+  font-weight: 600;
+}
+
+main a {
+  color: #BDBFB7;
+  font-weight: 100;
+}
+
+footer {
+  margin: 20px;
+  font-size: 15px;
+  gap: 5px;
+}
+
+footer a {
+  color: #2CAD3D;
+  font-weight: 600;
+}
+
+footer p {
+  color: white;
+}
+
+/* From Uiverse.io by vinodjangid07 */ 
+.Btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgba(140, 82, 255, 255);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px rgba(56,33,102,255);
+  transition-duration: .3s;
+}
+
+.svg {
+  width: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: .3s;
+}
+
+.Btn:hover {
+  color: transparent;
+}
+
+.Btn:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.Btn:active {
+  transform: translate(3px , 3px);
+  transition-duration: .3s;
+  box-shadow: 2px 2px 0px rgba(56,33,102,255);
+}
+
+/*Leadrboard*/
+.lb-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.forums{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+}
