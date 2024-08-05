@@ -10,6 +10,7 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const {signup, error, isLoading} = useSignup();
 
+
     const navigate = useNavigate();
 
 

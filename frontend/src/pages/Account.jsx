@@ -1,22 +1,21 @@
 import { useLogout } from "../hooks/useLogout";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 const Account = () => {
     const {logout} = useLogout();
-
+    const {user} = useAuthContext();
     const navigate = useNavigate();
 
     const handleClick = () =>{
         logout();
-
-        console.log('Logged out!');
-
         navigate('/');
     }
     
     return (  
         <div className="account">
-            <h2>Account</h2>
-            <button className="btn" onClick = {handleClick}>Logout</button>
+            <h2>{user ? user.username : <Link to="/login" onClick={''}>Log in to see details </Link>}</h2>
+            {user && <button className="btn" onClick={handleClick}>Logout</button>}
         </div>
     );
 }
