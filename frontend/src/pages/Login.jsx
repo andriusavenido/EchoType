@@ -1,13 +1,20 @@
-import { useState} from "react";
+import { useState,useContext, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import { useNavigate } from "react-router-dom";
+import { ActivePageContext } from "../context/ActivePageContext";
 
 const Login = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const {login, error, isLoading} = useLogin();
+
+    const {setActivePage} = useContext(ActivePageContext);
+    //reset Navbar
+    useEffect (() =>{
+        setActivePage('');
+    },[])
 
     const navigate = useNavigate();
 

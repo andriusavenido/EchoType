@@ -264,9 +264,6 @@ strong{
   border: 1px solid #3F3F40;
 }
 
-a {
-  text-decoration: none;
-}
 
 header, footer, main {
   display: flex;

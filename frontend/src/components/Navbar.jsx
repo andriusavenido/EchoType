@@ -1,11 +1,14 @@
 
 import {Link} from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useState } from "react";
+import { useContext } from "react";
+import { ActivePageContext } from "../context/ActivePageContext";
 
 const Navbar = () => {
     const { user } = useAuthContext();
-    const [activePage, setActivePage] = useState('');
+    const {activePage,setActivePage} = useContext(ActivePageContext);
+
+   
     return (  
         <nav className="navbar">
             <div className="links">

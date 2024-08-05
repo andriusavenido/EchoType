@@ -1,7 +1,7 @@
 const  Highscore = (props) => {
     return (  
         /* From Uiverse.io by shadowmurphy */ 
-<section class="card">
+<section className="card">
   <header>
     <p>{props.username}</p>
     <a href="#">Performed:</a>
