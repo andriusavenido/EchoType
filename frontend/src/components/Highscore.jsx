@@ -1,16 +1,16 @@
 const  Highscore = (props) => {
     return (  
         /* From Uiverse.io by shadowmurphy */ 
-<section className="card">
+<section class="card">
   <header>
-    <p>{props.username}</p>
+    <p>{props.username} </p>
     <a href="#">Performed:</a>
   </header>
   <main>
-    <p>42 <a href="#">ms</a></p>
+    <p>{props.wpm} <a href="#">wpm</a></p>
   </main>
   <footer>
-    <a href="#">Beats 92.42%</a><p>of users on Echoverse</p>
+    <a href="#">Congratulations</a><p>for being in the Leaderboard</p>
   </footer>        
 </section>
 
