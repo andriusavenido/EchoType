@@ -26,7 +26,7 @@ const Navbar = () => {
                 to="/options">Options</Link>
             </div>
 
-            <Link to="/" onClick={()=>setActivePage('')}><h2>Echotyper</h2></Link>
+            <Link to="/"><h2>Echotyper</h2></Link>
             
             <div className="links">
                 <Link 

@@ -4,10 +4,11 @@ const mongoose =require ('mongoose');
 
 
 const typeRecord_getAll = async (req,res) =>{
+    const user_id = req.user._id;
 
-   const typeRecords = await TypeRecord.find({}).sort({createAt:-1});
+   const typeRecords = await TypeRecord.find({ user_id }).sort({createAt:-1});
 
-     res.status(200).json(typeRecords);
+    res.status(200).json(typeRecords);
 }
 
 const typeRecord_getById = async (req,res)=>{

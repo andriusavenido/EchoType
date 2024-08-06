@@ -10,8 +10,12 @@ import About from './pages/About';
 import Forums from './pages/Forums';
 import Login from './pages/Login';
 import Account from './pages/Account';
+import RequireLogin from './pages/RequireLogin';
+
+import { useAuthContext } from './hooks/useAuthContext';
 
 function App() {
+  const {user} = useAuthContext();
 
   return (
     <Router>
@@ -19,13 +23,13 @@ function App() {
       <div className="pages">
         <Routes>
           <Route path = "/" element = {<Home/>}></Route>
-          <Route path ="/sign-up" element = {<SignUp/>}></Route>
+          <Route path ="/sign-up" element = {user ? <Account/> : <SignUp/>}></Route>
           <Route path ="/leaderboard" element = {<Leaderboard/>}></Route>
           <Route path ="/options" element = {<Options/>}></Route>
           <Route path ="/about" element = {<About/>}></Route>
           <Route path ="/forums" element = {<Forums/>}></Route>
-          <Route path ="/login" element = {<Login/>}></Route>
-          <Route path ="/account" element = {<Account/>}></Route>
+          <Route path ="/login" element = {user ? <Account/> : <Login/>}></Route>
+          <Route path ="/account" element = { user ? <Account/> : <RequireLogin></RequireLogin>}></Route>
         </Routes>
       </div>
     </Router>

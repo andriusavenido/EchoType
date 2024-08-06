@@ -1,5 +1,5 @@
 import { useLogout } from "../hooks/useLogout";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 
 
@@ -15,7 +15,6 @@ const Account = () => {
     
     return (  
         <div className="account">
-            <h2>{user ? user.username : <Link to="/login" onClick={''}>Log in to see details </Link>}</h2>
             {user && <button className="btn" onClick={handleClick}>Logout</button>}
         </div>
     );

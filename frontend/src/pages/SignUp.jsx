@@ -10,6 +10,8 @@ const SignUp = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const {signup, error, isLoading} = useSignup();
+   
+    const navigate = useNavigate();
 
     const {setActivePage} = useContext(ActivePageContext);
     //reset Navbar
@@ -17,15 +19,15 @@ const SignUp = () => {
         setActivePage('');
     },[])
 
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         
-        await signup(email, username, password);
+       const signedUp = await signup(email, username, password);
 
-        console.log(error);
-    
+       if (signedUp){
+        navigate('/');
+       }
     }
 
     return ( 
