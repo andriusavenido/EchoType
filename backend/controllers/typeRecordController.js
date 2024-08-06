@@ -6,7 +6,7 @@ const mongoose =require ('mongoose');
 const typeRecord_getAll = async (req,res) =>{
     const user_id = req.user._id;
 
-   const typeRecords = await TypeRecord.find({ user_id }).sort({createAt:-1});
+   const typeRecords = await TypeRecord.find({ user_id }).sort({wpm:-1});
 
     res.status(200).json(typeRecords);
 }
@@ -29,7 +29,7 @@ const typeRecord_getById = async (req,res)=>{
 
 const typeRecord_create = async (req,res) =>{
 
-    const{username, wpm, performance_string, word_bank} = req.body;
+    const{username,wpm, performance_string, word_bank} = req.body;
 
     try{
         const user_id = req.user._id;
