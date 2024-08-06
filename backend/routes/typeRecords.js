@@ -7,11 +7,14 @@ const {
     typeRecord_create,
     typeRecord_getById,
     typeRecord_delete,
-    typeRecord_update
+    typeRecord_update,
+    typeRecord_getLeaderboard
     
 } = require('../controllers/typeRecordController') ;
 
 const requireAuth = require('../middleware/requireAuth');
+
+router.get('/lb', typeRecord_getLeaderboard);
 
 //require auth for all workout routes
 router.use(requireAuth);

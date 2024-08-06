@@ -7,6 +7,10 @@ const typeRecordSchema = new Schema({
         type: String,
         required: true
     },
+    user_id:{
+        type: String,
+        required:true
+    },
     wpm:{
         type: Number,
         required: true
