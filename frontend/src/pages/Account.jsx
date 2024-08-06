@@ -8,14 +8,17 @@ const Account = () => {
     const {user} = useAuthContext();
     const navigate = useNavigate();
 
-    const handleClick = () =>{
+    const handleLogout = () =>{
         logout();
         navigate('/');
     }
     
     return (  
         <div className="account">
-            {user && <button className="btn" onClick={handleClick}>Logout</button>}
+            <div className="topscores">
+                <h2>Top Records</h2>
+            </div>
+            {user && <button className="btn" onClick={handleLogout}>Logout</button>}
         </div>
     );
 }
