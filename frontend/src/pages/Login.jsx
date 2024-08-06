@@ -14,7 +14,7 @@ const Login = () => {
     //reset Navbar
     useEffect (() =>{
         setActivePage('');
-    },[])
+    },[]);
 
     const navigate = useNavigate();
 
