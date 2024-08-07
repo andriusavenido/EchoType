@@ -1,8 +1,8 @@
 import { useLogout } from "../hooks/useLogout";
 import {  useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { TypeRecordContext } from "../context/TypeRecordContext";
-import { useContext, useEffect } from "react";
+import { useTypeRecordContext } from "../context/TypeRecordContext";
+import { useEffect } from "react";
 import Record from "../components/Record";
 
 
@@ -11,7 +11,7 @@ const Account = () => {
     const {user} = useAuthContext();
     const navigate = useNavigate();
 
-    const {records,dispatch} = useContext(TypeRecordContext);
+    const {records,dispatch} = useTypeRecordContext();
 
     useEffect(() =>{
         const fetchRecords = async () =>{

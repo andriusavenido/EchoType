@@ -1,4 +1,4 @@
-import { createContext, useReducer} from 'react';
+import { createContext, useReducer,useContext} from 'react';
 
 export const TypeRecordContext = createContext();
 
@@ -33,4 +33,14 @@ export const TypeRecordContextProvider = ({children}) =>{
         </TypeRecordContext.Provider>
     );
 
+}
+
+export const useTypeRecordContext = () =>{
+    const context = useContext(TypeRecordContext);
+
+    if (!context) {
+        throw Error (' useAuthContext must be used inside AuthContextProvider.');
+    }
+
+    return context;
 }
