@@ -11,10 +11,6 @@ const forumPostSchema = new Schema({
         type: String,
         required: true
     },
-    subtitle:{
-        type: String,
-        required: true
-    },
     body:{
         type: String,
         required: true

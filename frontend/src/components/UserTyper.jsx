@@ -3,25 +3,82 @@ import useWordBank from "../hooks/useWordBank";
 
 
 const UserTyper = () => {   
-    const {text} = useWordBank(0);
+
+
+    const {text}=useWordBank(30);
+    const [currentText, setText] = useState(text);
+
+    const [typed, setTyped] = useState([]);
 
     const [isTyping, setIsTyping] = useState(0);
-    const [charIndex, setCharIndex] = useState(0);
-    const [letterState, setLetterState] = useState([]);
+    const [charIndex, setCharIndex] = useState(0);//current index
+    const [letterState, setLetterState] = useState([]);// array that keeps track of right/wrong
 
     const maxTime = 60;
     const [timeLeft, setTimeLeft] = useState(maxTime);
     const [mistakes, setMistakes] = useState(0);
     const [WPM, setWPM] = useState(0);
 
-    const inputRef = useRef(null);
-    const charRefs = useRef([]);
+    const charRefs = useRef([]);//characters given by bank
 
     //start of render
     useEffect(()=>{
-        inputRef.current.focus();
         setLetterState(Array(charRefs.current.length).fill(''));
+
+        const handlePressedKey = (event) =>{
+            if (
+                (event.keyCode >= 48 && event.keyCode <= 57) ||  // Numbers 0-9
+                (event.keyCode >= 65 && event.keyCode <= 90) ||  // Uppercase letters A-Z
+                (event.keyCode >= 97 && event.keyCode <= 122) || // Lowercase letters a-z
+                (event.keyCode >= 33 && event.keyCode <= 47) ||  // Punctuation !"#$%&'()*+,-./
+                (event.keyCode >= 58 && event.keyCode <= 64) ||  // Punctuation :;<=>?@
+                (event.keyCode >= 91 && event.keyCode <= 96) ||  // Punctuation [\]^_`
+                (event.keyCode >= 123 && event.keyCode <= 126) ||  // Punctuation {|}~
+                (event.keyCode ==8) || (event.keyCode ==32)
+              ) {
+
+                //check only if we are typing 
+                setTyped((previous) => [...previous,event.key]);//track typed char
+              }
+        };
+
+        window.addEventListener('keydown',handlePressedKey);
+
+        //cleanup function
+        return () => {
+            window.removeEventListener('keydown', handlePressedKey);
+          };
     },[]);
+
+    //typed logic
+    useEffect(()=>{
+        if (typed.length === 0) return;
+        const letters = charRefs.current;//total letters
+        let currentLetter = charRefs.current[charIndex]; //holds span of letter
+        let typedLetter = typed[typed.length-1];//last typed char
+
+        if (charIndex < letters.length && timeLeft >0){
+            //if not typing yet
+            if (!isTyping){
+                setIsTyping(true);
+            }
+            //mistake
+            if (!(typedLetter === currentLetter.textContent)){ 
+                setMistakes(mistakes +1);
+                letterState[charIndex] = "wrong";
+                setCharIndex(charIndex +1);
+            }else if (typedLetter === currentLetter.textContent){ 
+                letterState[charIndex] = "right";
+                setCharIndex(charIndex +1);
+            }
+            
+            if (charIndex === letters.length -1){
+                setIsTyping(false);
+            }
+        } else{
+            setIsTyping(false);
+        }
+    },[typed]);
 
     //timer effect || calculate stats
     useEffect(()=>{
@@ -48,34 +105,6 @@ const UserTyper = () => {
     },[isTyping, timeLeft]);
 
     //typed logic handler
-    const handleChange = (e) =>{
-        const letters = charRefs.current;
-        let currentLetter = charRefs.current[charIndex]; //holds span of letter
-        let typedLetter = e.target.value.slice(-1);//last typed char
-
-        if (charIndex < letters.length && timeLeft >0){
-            //if not typing yet
-            if (!isTyping){
-                setIsTyping(true);
-            }
-            //mistake
-            if (!(typedLetter === currentLetter.textContent)){ 
-                setMistakes(mistakes +1);
-                letterState[charIndex] = "wrong";
-            }else if (typedLetter === currentLetter.textContent){ 
-                letterState[charIndex] = "right";
-            }
-
-            setCharIndex(charIndex +1); //add increase pointer
-
-            if (charIndex === letters.length -1){
-                setIsTyping(false);
-            }
-        } else{
-            setIsTyping(false);
-        }
-    }
-
     const resetTypeState = () =>{
         setIsTyping(false);
         setTimeLeft(maxTime);
@@ -83,23 +112,22 @@ const UserTyper = () => {
         setMistakes(0);
         setWPM(0);
         setLetterState(Array(charRefs.current.length).fill(''));
-        inputRef.current.focus();
-        inputRef.current.value = '';
+        setTyped([]);
     }
-
-
 
     return (  
         <>
         <div className="typerWrapper">
-            <div id="words" onClick={ () => inputRef.current.focus()}>
-                <input type="text" id="input-field" ref = {inputRef} onChange ={handleChange} autoComplete="off"/>
-                { text.split("").map((char, index) =>{
+            <div id="words" >
+                { currentText && currentText.split("").map((char, index) =>{
                              return <span 
                                 className={`char ${index === charIndex ? "active ": ""}${letterState[index]}`}
                                 key ={index}
                                 ref ={(e) => charRefs.current[index] = e}>{char}</span>;
                     })
+                }
+                {!currentText && <p>Loading...</p>
+
                 }
             </div>
         </div>
@@ -107,7 +135,7 @@ const UserTyper = () => {
                 <p>Time:<strong>{timeLeft}</strong></p>  
                 <p>Mistakes:<strong id="mistakes">{mistakes}</strong> </p>
                 <p>WPM: <strong>{WPM}</strong></p>
-                <button className="btn" onClick={resetTypeState}>Restart</button>
+                <button className="btn" onClick={resetTypeState} >Restart</button>
             </div>
         </>
     );
