@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import useWordBank from "../hooks/useWordBank";
-
+import Summary from "./Summary";
 
 const UserTyper = () => {   
-
-
-    const {text}=useWordBank(30);
-    const [currentText, setText] = useState(text);
+ 
+   const {text,regenerateText}=useWordBank(30);
+   const [showSummary, setShowSummary] = useState(false);
 
     const [typed, setTyped] = useState([]);
 
@@ -21,10 +20,9 @@ const UserTyper = () => {
 
     const charRefs = useRef([]);//characters given by bank
 
-    //start of render
+    //event listener
     useEffect(()=>{
         setLetterState(Array(charRefs.current.length).fill(''));
-
         const handlePressedKey = (event) =>{
             if (
                 (event.keyCode >= 48 && event.keyCode <= 57) ||  // Numbers 0-9
@@ -62,8 +60,13 @@ const UserTyper = () => {
             if (!isTyping){
                 setIsTyping(true);
             }
-            //mistake
-            if (!(typedLetter === currentLetter.textContent)){ 
+
+            if (typedLetter ==='Backspace'&& charIndex!==0){
+
+                setCharIndex(charIndex -1);
+                letterState[charIndex-1]="";
+            }
+            else if (!(typedLetter === currentLetter.textContent)){ 
                 setMistakes(mistakes +1);
                 letterState[charIndex] = "wrong";
                 setCharIndex(charIndex +1);
@@ -74,6 +77,7 @@ const UserTyper = () => {
             
             if (charIndex === letters.length -1){
                 setIsTyping(false);
+                setShowSummary(true);
             }
         } else{
             setIsTyping(false);
@@ -98,6 +102,7 @@ const UserTyper = () => {
         } else if (timeLeft ===0){
             clearInterval(interval);
             setIsTyping(false);
+            setShowSummary(true);
         }
         return () =>{
             clearInterval(interval);
@@ -106,6 +111,8 @@ const UserTyper = () => {
 
     //typed logic handler
     const resetTypeState = () =>{
+        regenerateText();
+        setShowSummary(false);
         setIsTyping(false);
         setTimeLeft(maxTime);
         setCharIndex(0);
@@ -118,25 +125,25 @@ const UserTyper = () => {
     return (  
         <>
         <div className="typerWrapper">
-            <div id="words" >
-                { currentText && currentText.split("").map((char, index) =>{
+           {!showSummary &&<div id="words" >
+                { text ? (text.split("").map((char, index) =>{
                              return <span 
                                 className={`char ${index === charIndex ? "active ": ""}${letterState[index]}`}
                                 key ={index}
                                 ref ={(e) => charRefs.current[index] = e}>{char}</span>;
-                    })
-                }
-                {!currentText && <p>Loading...</p>
-
-                }
-            </div>
+                    }))
+                :<p>Loading...</p>}
+            </div>}
+            {showSummary && <Summary wpm = {WPM} mistakes = {mistakes} timeLeft={timeLeft} text= {text} ></Summary>}
         </div>
+        <hr></hr>
         <div id="typer-controls">
                 <p>Time:<strong>{timeLeft}</strong></p>  
                 <p>Mistakes:<strong id="mistakes">{mistakes}</strong> </p>
                 <p>WPM: <strong>{WPM}</strong></p>
-                <button className="btn" onClick={resetTypeState} >Restart</button>
+                <button className="btn" onClick={resetTypeState} tabIndex={-1}>Restart</button>
             </div>
+       
         </>
     );
 }
