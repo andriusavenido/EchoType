@@ -9,6 +9,8 @@ const UserTyper = () => {
 
     const [typed, setTyped] = useState([]);
 
+    const [currentTextLength,setCurrentTextLength] = useState(0);
+
     const [isTyping, setIsTyping] = useState(0);
     const [charIndex, setCharIndex] = useState(0);//current index
     const [letterState, setLetterState] = useState([]);// array that keeps track of right/wrong
@@ -32,7 +34,7 @@ const UserTyper = () => {
                 (event.keyCode >= 58 && event.keyCode <= 64) ||  // Punctuation :;<=>?@
                 (event.keyCode >= 91 && event.keyCode <= 96) ||  // Punctuation [\]^_`
                 (event.keyCode >= 123 && event.keyCode <= 126) ||  // Punctuation {|}~
-                (event.keyCode ==8) || (event.keyCode ==32)
+                (event.keyCode ==8 )||(event.keyCode ==32)
               ) {
 
                 //check only if we are typing 
@@ -50,39 +52,51 @@ const UserTyper = () => {
 
     //typed logic
     useEffect(()=>{
+
+        // console.log(charIndex)
         if (typed.length === 0) return;
         const letters = charRefs.current;//total letters
+        // console.log("textlegnth",currentTextLength);
         let currentLetter = charRefs.current[charIndex]; //holds span of letter
         let typedLetter = typed[typed.length-1];//last typed char
 
-        if (charIndex < letters.length && timeLeft >0){
-            //if not typing yet
-            if (!isTyping){
-                setIsTyping(true);
-            }
-
-            if (typedLetter ==='Backspace'&& charIndex!==0){
-
-                setCharIndex(charIndex -1);
-                letterState[charIndex-1]="";
-            }
-            else if (!(typedLetter === currentLetter.textContent)){ 
-                setMistakes(mistakes +1);
-                letterState[charIndex] = "wrong";
-                setCharIndex(charIndex +1);
-            }else if (typedLetter === currentLetter.textContent){ 
-                letterState[charIndex] = "right";
-                setCharIndex(charIndex +1);
-            }
-            
-            if (charIndex === letters.length -1){
+        try {
+            if (charIndex < letters.length && timeLeft >0){
+                if (charIndex >= currentTextLength-1){
+                    setIsTyping(false);
+                    setShowSummary(true);
+                }
+                if (!isTyping){
+                    setIsTyping(true);
+                }
+    
+                if (typedLetter ==='Backspace'&& charIndex!==0){
+    
+                    setCharIndex((prev)=>prev -1);
+                    letterState[charIndex-1]="";
+                    
+                }
+                else if (!(typedLetter === currentLetter.textContent)){ 
+                    setMistakes(mistakes +1);
+                    letterState[charIndex] = "wrong";
+                    setCharIndex(charIndex +1);
+                }else if (typedLetter === currentLetter.textContent){ 
+                    letterState[charIndex] = "right";
+                    setCharIndex(charIndex +1);
+                }
+            } else{
                 setIsTyping(false);
-                setShowSummary(true);
             }
-        } else{
-            setIsTyping(false);
+        }catch(error){
+            console.log('Type Checker Error:',error)
         }
+       
     },[typed]);
+
+    useEffect(()=>{
+        if (!text) return;
+        setCurrentTextLength(text.length);
+    },[text])
 
     //timer effect || calculate stats
     useEffect(()=>{
