@@ -1,14 +1,16 @@
-const ForumPost = () => {
+import { formatDistanceToNow } from "date-fns"
+
+const ForumPost = (props) => {
     return ( 
         /* From Uiverse.io by JohnnyCSilva */ 
-<div class="card">
-  <div class="img"></div>
-  <div class="textBox">
-    <div class="textContent">
-      <p class="h1">Username</p>
-      <span class="span">12 min ago</span>
+<div className="card">
+  <div className="img"></div>
+  <div className="textBox">
+    <div className="textContent">
+      <p className="h1">{props.username}: {props.title}</p>
+      <span className="span">{formatDistanceToNow(new Date(props.createdAt), {addSuffix: true})}</span>
     </div>
-    <p class="p">Andre x Gian</p>
+    <p className="p">{props.body}</p>
   <div>
 </div></div></div>
      );

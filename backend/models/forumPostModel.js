@@ -14,6 +14,11 @@ const forumPostSchema = new Schema({
     body:{
         type: String,
         required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        expires: 5 * 60 // TTL of 5 minutes (300 seconds)
     }
     
 }, {timestamps: true, collection: 'forums'});

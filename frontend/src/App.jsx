@@ -11,6 +11,7 @@ import Forums from './pages/Forums';
 import Login from './pages/Login';
 import Account from './pages/Account';
 import RequireLogin from './pages/RequireLogin';
+import ForumField from './pages/ForumField';
 
 import { useAuthContext } from './hooks/useAuthContext';
 
@@ -30,6 +31,7 @@ function App() {
           <Route path ="/forums" element = {<Forums/>}></Route>
           <Route path ="/login" element = {user ? <Account/> : <Login/>}></Route>
           <Route path ="/account" element = { user ? <Account/> : <RequireLogin></RequireLogin>}></Route>
+          <Route path ="/forums/post" element = {user ? <ForumField/> : <RequireLogin></RequireLogin>}></Route>
         </Routes>
       </div>
     </Router>
