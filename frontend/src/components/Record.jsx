@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useTypeRecordContext } from "../context/TypeRecordContext";
 
 const Record = ({ record }) => {
+
   const [visibleWords, setVisibleWords] = useState(false);
+  const { user } = useAuthContext();
+  const {dispatch} = useTypeRecordContext();
 
   const date = new Date(record.createdAt);
   const dateOptions = {
@@ -19,10 +24,21 @@ const Record = ({ record }) => {
   const toggleWordBank = () => {
     setVisibleWords((prev) => !prev);
   };
-  
- //delete self function
-  const deleteRecord = () =>{
 
+ //delete self function
+  const deleteRecord = async() =>{
+    const response = await fetch('/api/typeRecords/'+record._id,{
+      method: 'DELETE',
+      headers:{
+          'Authorization': `Bearer ${user.token}`
+      }
+    })
+
+    const json = await response.json();
+
+    if (response.ok){
+      dispatch({type:'DELETE_RECORD',payload:json});
+    }
   }
 
  

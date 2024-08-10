@@ -54,7 +54,10 @@ const typeRecord_delete = async (req, res) =>{
         return res.status(400).json({error: 'No Record Exists'});
     }
     
-    res.status(200).json(typeRecord);
+    res.status(200).json({
+        _id: typeRecord._id,
+        msg: "Deleted Successfully"
+    });
 }
 
 const typeRecord_update = async (req, res) =>{

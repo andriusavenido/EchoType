@@ -446,9 +446,6 @@ footer p {
   flex-shrink: 0; /* Prevents the item from shrinking */
 }
 
-.recordDetails{
-}
-
 .record h3{
   color: var(--analogColor);
   text-shadow: 2px 2px 1px var(--shadowColor);
