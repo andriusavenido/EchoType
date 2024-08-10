@@ -470,3 +470,12 @@ footer p {
   color: var(--logoColor);
   text-shadow: 2px 2px 1px var(--shadowColor);
 }
+
+.authored{
+  display: flex;
+}
+
+.authorCard{
+  margin: 20px;
+  width: 100px;
+}
