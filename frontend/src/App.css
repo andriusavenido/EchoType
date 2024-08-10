@@ -461,3 +461,12 @@ footer p {
 .record button:hover{
   background-color: var(--analogColor);
 }
+
+.about{
+  width: 800px;
+  margin: 10px auto;
+}
+.about h1{
+  color: var(--logoColor);
+  text-shadow: 2px 2px 1px var(--shadowColor);
+}
