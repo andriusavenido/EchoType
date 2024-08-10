@@ -3,6 +3,15 @@
   --shadowColor: rgba(56,33,102,255);
   --analogColor: #e252ff;
   --fadedColor: #c16fd1;
+  --backgroundColor:#221c24;
+  --typedColor:rgba(255, 255, 255, 0.87);
+
+  color: var(--typedColor);
+  background-color: var(--backgroundColor);
+}
+
+*{
+  color: var(--typedColor);
 }
 /*Navbar Styles*/
 .navbar{
@@ -33,7 +42,7 @@
 }
 
 a{
-  color:#fff;
+  color:var(--typedColor);
 }
 a:hover{
   color: var(--analogColor);
@@ -104,7 +113,7 @@ hr{
 
 @keyframes blinking {
     0%   { border-color:  var(--logoColor) }
-    100% { border-color:  #242424  }
+    100% { border-color:  var(--backgroundColor) }
 }
 
 .wrong{
@@ -138,7 +147,7 @@ strong{
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 0 20px var(--logoColor);
-  background-color: var(#242424);
+  background-color: var(--backgroundColor);
   overflow: hidden;
   align-items: flex-start;
 }
@@ -478,4 +487,20 @@ footer p {
 .authorCard{
   margin: 20px;
   width: 100px;
+}
+
+.options{
+  margin: 0 auto;
+  text-align: center;
+}
+.options label{
+  font-weight: bold;
+  font-size: large;
+}
+
+.options select{
+  border-radius: 5px;
+  font-family: "IBM Plex Mono", monospace;
+  background-color: var(--backgroundColor);
+
 }
