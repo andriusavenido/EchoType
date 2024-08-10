@@ -6,14 +6,14 @@ export const usePostRecord = () => {
     const [error,setError] = useState(null);
     const {user} = useAuthContext();
 
-    const postRecord = async (username,wpm,performance_string, word_bank) =>{
+    const postRecord = async (username,wpm,elapsed_time, word_bank) =>{
         setIsLoading(true);
         setError(true);
 
         const response = await fetch('/api/typeRecords/',{
             method: 'POST',
             headers: {'Content-Type' : 'application/json','Authorization': `Bearer ${user.token}`},
-            body: JSON.stringify({username,wpm,performance_string,word_bank})
+            body: JSON.stringify({username,wpm,elapsed_time,word_bank})
         })
 
         const json = await response.json();

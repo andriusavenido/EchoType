@@ -13,6 +13,7 @@ const Account = () => {
 
     const {records,dispatch} = useTypeRecordContext();
 
+    //grab data
     useEffect(() =>{
         const fetchRecords = async () =>{
             const response = await fetch('/api/typeRecords',{
@@ -30,6 +31,7 @@ const Account = () => {
             fetchRecords();
         }
     },[dispatch,user]);
+    //add delete function
 
     const handleLogout = () =>{
         logout();
@@ -38,13 +40,20 @@ const Account = () => {
     
     return (  
         <div className="account">
-            <div className="topscores">
-                <h2>Your Top Records</h2>
-                {records && records.map((record)=>(
-                    <Record key = {record._id} record={record}></Record>
-                ))}
+            <div className="details">
+                <h2>{user.username}</h2>
+                <h3>{user.email}</h3>
+                {user && <button className="btn" onClick={handleLogout}>Logout</button>}
             </div>
-            {user && <button className="btn" onClick={handleLogout}>Logout</button>}
+            <div className="wrapper">
+                <h2>Your Top Records</h2><hr />
+                <div className="topscores">
+                        {records && records.map((record)=>(
+                        <Record key = {record._id} record={record}></Record>
+                    ))}
+                </div>
+                <p><strong>Scroll to see all.</strong></p>
+            </div>
         </div>
     );
 }

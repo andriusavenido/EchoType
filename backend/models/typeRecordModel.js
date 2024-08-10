@@ -15,8 +15,8 @@ const typeRecordSchema = new Schema({
         type: Number,
         required: true
     },
-    performance_string:{
-        type: String,
+    elapsed_time:{
+        type: Number,
         required: true
     },
     word_bank:{

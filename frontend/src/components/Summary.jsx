@@ -12,7 +12,7 @@ const Summary = ({wpm, mistakes, timeLeft, text}) => {
     const handleSave = async(e) =>{
         e.preventDefault();
 
-        await postRecord(user.username, wpm, "PLACEHOLDER",text);
+        await postRecord(user.username, wpm, (60 - timeLeft),text);
 
         if (postRecord && !error){
             setButtonState('Saved');
@@ -34,7 +34,7 @@ const Summary = ({wpm, mistakes, timeLeft, text}) => {
         >  {isLoading ? 'Loading...' : buttonState === 'Saved' ? 'Saved' : error ? error: 'Save'}
         </button>
         
-        : <Link to="/login"> You must login.</Link>}
+        : <Link to="/login"> Login</Link>}
     </div> );
 }
  

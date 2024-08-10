@@ -181,22 +181,6 @@ strong{
   box-shadow: 0px 0px 5px -3px #111;
 }
 
-/*             ACCOUNT PAGE             */
-
-.account{
-  display: flex;
-  width: 800px;
-  height: 500px;
-  margin: 0 auto;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.account a{
-  text-align: center;
-}
-
 
 /* Forum post */ 
 .card {
@@ -396,4 +380,87 @@ footer p {
 .summary strong.purple{
   color: var(--logoColor);
   font-size: 25px;
+}
+
+/*             ACCOUNT PAGE             */
+
+.account{
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.account a{
+  text-align: center;
+}
+.account h2{
+  color: var(--logoColor);
+}
+
+.details{
+  width:200px;
+  height: 300px;
+  /* border: solid #fff; */
+  flex-grow: 0;  /* Prevents the item from growing */
+  flex-shrink: 0; /* Prevents the item from shrinking */
+  padding: 15px;
+}
+
+.details h2{
+  text-shadow: 2px 2px 1px var(--shadowColor);
+}
+
+.account>.wrapper{
+  overflow: hidden;
+  
+}
+
+.account>.wrapper hr{
+  width: auto;
+}
+
+
+.topscores{
+  width: auto;
+  height: 350px;
+  flex-grow: 1;
+  padding: 5px;
+  overflow: auto;
+  
+}
+.topscores::-webkit-scrollbar{
+  display: none;
+}
+
+.record{
+  display: flex;
+}
+.wpm{
+  width: 100px;
+  text-align: center;
+  
+  flex-grow: 0;  /* Prevents the item from growing */
+  flex-shrink: 0; /* Prevents the item from shrinking */
+}
+
+.recordDetails{
+}
+
+.record h3{
+  color: var(--analogColor);
+  text-shadow: 2px 2px 1px var(--shadowColor);
+  font-size: 25px;
+}
+.record button{
+  max-width: 500px;
+  background-color: var(--shadowColor);
+  border: none;
+  border-radius: 5px;
+  font-family: "IBM Plex Mono", monospace;
+}
+.record button:hover{
+  background-color: var(--analogColor);
 }
