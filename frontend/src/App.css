@@ -2,6 +2,16 @@
   --logoColor: rgba(140,82,255,255);
   --shadowColor: rgba(56,33,102,255);
   --analogColor: #e252ff;
+  --fadedColor: #c16fd1;
+  --backgroundColor:#221c24;
+  --typedColor:rgba(255, 255, 255, 0.87);
+
+  color: var(--typedColor);
+  background-color: var(--backgroundColor);
+}
+
+*{
+  color: var(--typedColor);
 }
 /*Navbar Styles*/
 .navbar{
@@ -32,10 +42,14 @@
 }
 
 a{
-  color:#fff;
+  color:var(--typedColor);
 }
 a:hover{
   color: var(--analogColor);
+}
+
+hr{
+  width: 50%;
 }
 
 .btn{
@@ -70,7 +84,6 @@ a:hover{
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 20px;
-  border-bottom: solid 2px;
   overflow: hidden;
 }
 
@@ -100,11 +113,12 @@ a:hover{
 
 @keyframes blinking {
     0%   { border-color:  var(--logoColor) }
-    100% { border-color:  #242424  }
+    100% { border-color:  var(--backgroundColor) }
 }
 
 .wrong{
   color: var(--analogColor);
+  background-color: var(--shadowColor);
 }
 .right{
   color: var(--logoColor);
@@ -133,7 +147,7 @@ strong{
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 0 20px var(--logoColor);
-  background-color: var(#242424);
+  background-color: var(--backgroundColor);
   overflow: hidden;
   align-items: flex-start;
 }
@@ -174,22 +188,6 @@ strong{
   border-radius: 8px;
   font-size: 12px;
   box-shadow: 0px 0px 5px -3px #111;
-}
-
-/*             ACCOUNT PAGE             */
-
-.account{
-  display: flex;
-  width: 800px;
-  height: 500px;
-  margin: 0 auto;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.account a{
-  text-align: center;
 }
 
 
@@ -376,6 +374,7 @@ footer p {
 
 }
 
+
 /*SearchBar*/
 /* From Uiverse.io by OnCloud125252 */ 
 .inputBox_container {
@@ -408,4 +407,137 @@ footer p {
 
 ::placeholder {
   color: #abb2bf;
+
+.summary{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  position: relative;
+}
+.summary *{
+  margin: 5px;
+}
+.summary strong.pink{
+  color: var(--analogColor);
+  font-size: 25px;
+}
+.summary strong.purple{
+  color: var(--logoColor);
+  font-size: 25px;
+}
+
+/*             ACCOUNT PAGE             */
+
+.account{
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.account a{
+  text-align: center;
+}
+.account h2{
+  color: var(--logoColor);
+}
+
+.details{
+  width:200px;
+  height: 300px;
+  /* border: solid #fff; */
+  flex-grow: 0;  /* Prevents the item from growing */
+  flex-shrink: 0; /* Prevents the item from shrinking */
+  padding: 15px;
+}
+
+.details h2{
+  text-shadow: 2px 2px 1px var(--shadowColor);
+}
+
+.account>.wrapper{
+  overflow: hidden;
+  
+}
+
+.account>.wrapper hr{
+  width: auto;
+}
+
+
+.topscores{
+  width: auto;
+  height: 350px;
+  flex-grow: 1;
+  padding: 5px;
+  overflow: auto;
+  
+}
+.topscores::-webkit-scrollbar{
+  display: none;
+}
+
+.record{
+  display: flex;
+}
+.wpm{
+  width: 100px;
+  text-align: center;
+  
+  flex-grow: 0;  /* Prevents the item from growing */
+  flex-shrink: 0; /* Prevents the item from shrinking */
+}
+
+.record h3{
+  color: var(--analogColor);
+  text-shadow: 2px 2px 1px var(--shadowColor);
+  font-size: 25px;
+}
+.record button{
+  max-width: 500px;
+  background-color: var(--shadowColor);
+  border: none;
+  border-radius: 5px;
+  font-family: "IBM Plex Mono", monospace;
+}
+.record button:hover{
+  background-color: var(--analogColor);
+}
+
+.about{
+  width: 800px;
+  margin: 10px auto;
+}
+.about h1{
+  color: var(--logoColor);
+  text-shadow: 2px 2px 1px var(--shadowColor);
+}
+
+.authored{
+  display: flex;
+}
+
+.authorCard{
+  margin: 20px;
+  width: 100px;
+}
+
+.options{
+  margin: 0 auto;
+  text-align: center;
+}
+.options label{
+  font-weight: bold;
+  font-size: large;
+}
+
+.options select{
+  border-radius: 5px;
+  font-family: "IBM Plex Mono", monospace;
+  background-color: var(--backgroundColor);
+
+
 }

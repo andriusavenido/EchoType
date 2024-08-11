@@ -6,7 +6,8 @@ const mongoose =require ('mongoose');
 const typeRecord_getAll = async (req,res) =>{
     const user_id = req.user._id;
 
-   const typeRecords = await TypeRecord.find({ user_id }).sort({wpm:-1});
+    //get by user id, limit by 10
+   const typeRecords = await TypeRecord.find({ user_id }).sort({wpm:-1}).limit(10);;
 
     res.status(200).json(typeRecords);
 }
@@ -29,11 +30,11 @@ const typeRecord_getById = async (req,res)=>{
 
 const typeRecord_create = async (req,res) =>{
 
-    const{username,wpm, performance_string, word_bank} = req.body;
+    const{username,wpm, elapsed_time, word_bank} = req.body;
 
     try{
         const user_id = req.user._id;
-        const typeRecord = await TypeRecord.create({username, user_id, wpm, performance_string, word_bank});
+        const typeRecord = await TypeRecord.create({username, user_id, wpm, elapsed_time, word_bank});
         res.status(200).json(typeRecord);
     }catch (error){
         res.status(400).json({error: error.messasge});
@@ -53,7 +54,10 @@ const typeRecord_delete = async (req, res) =>{
         return res.status(400).json({error: 'No Record Exists'});
     }
     
-    res.status(200).json(typeRecord);
+    res.status(200).json({
+        _id: typeRecord._id,
+        msg: "Deleted Successfully"
+    });
 }
 
 const typeRecord_update = async (req, res) =>{
