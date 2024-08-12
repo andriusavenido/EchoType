@@ -7,7 +7,6 @@ export const OptionsContextProvider = ({children}) =>{
         const savedTheme = localStorage.getItem('theme');
         return savedTheme ? savedTheme: 'default';
     });
-    const [wordCount, setWordCount] = useState(30);
 
     //choosing theme
     useEffect(()=>{
@@ -28,6 +27,22 @@ export const OptionsContextProvider = ({children}) =>{
                 root.style.setProperty('--analogColor', '#D52A73');
                 root.style.setProperty('--fadedColor', '#c16fd1');
                 root.style.setProperty('--backgroundColor', '#e0c7e6');
+                root.style.setProperty('--typedColor', '#000000');
+                break;
+            case 'wood':
+                root.style.setProperty('--logoColor', '#228B22');
+                root.style.setProperty('--shadowColor', '#104110');
+                root.style.setProperty('--analogColor', '#009696');
+                root.style.setProperty('--fadedColor', '#c16fd1');
+                root.style.setProperty('--backgroundColor', '#A1662F');
+                root.style.setProperty('--typedColor', '#000000');
+                break;
+            case 'velvet':
+                root.style.setProperty('--logoColor', '#921A40');
+                root.style.setProperty('--shadowColor', '#D9ABAB');
+                root.style.setProperty('--analogColor', '#5BC7A8');
+                root.style.setProperty('--fadedColor', '#D9ABAB');
+                root.style.setProperty('--backgroundColor', '#F4D9D0');
                 root.style.setProperty('--typedColor', '#000000');
                 break;
             default:

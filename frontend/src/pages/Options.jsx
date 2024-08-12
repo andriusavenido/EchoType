@@ -11,6 +11,8 @@ const Options = () => {
                 <select id="theme" name="theme" value = {theme}onChange={handleThemeChange}>
                     <option value="default">Default</option>
                     <option value="light">Light</option>
+                    <option value="wood">Wood</option>
+                    <option value="velvet">Velvet</option>
                 </select>
         </div>
     );

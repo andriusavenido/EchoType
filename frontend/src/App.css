@@ -321,12 +321,12 @@ footer p {
   height: 40px;
   border: none;
   padding: 0px 20px;
-  background-color: rgba(140, 82, 255, 255);
+  background-color: var(--logoColor);
   color: white;
   font-weight: 500;
   cursor: pointer;
   border-radius: 10px;
-  box-shadow: 5px 5px 0px rgba(56,33,102,255);
+  box-shadow: 5px 5px 0px var(--shadowColor);
   transition-duration: .3s;
   margin-top: 30px;
 }
@@ -407,6 +407,7 @@ footer p {
 
 ::placeholder {
   color: #abb2bf;
+}
 
 .summary{
   display: flex;
@@ -538,6 +539,4 @@ footer p {
   border-radius: 5px;
   font-family: "IBM Plex Mono", monospace;
   background-color: var(--backgroundColor);
-
-
 }
