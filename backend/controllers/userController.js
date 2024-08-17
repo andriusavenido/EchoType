@@ -5,7 +5,7 @@ const createToken = (_id) =>{
    return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d'} );
 }
 
-// login user
+// login user : refresh token
 const user_login = async (req,res) =>{
     const { email, password } = req.body;
 

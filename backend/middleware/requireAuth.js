@@ -19,8 +19,15 @@ const requireAuth = async (req,res,next) =>{
 
         next();
     } catch (error){
-        console.log(error);
-        res.status(401).json({error: 'Req is not authorized'});
+        console.error('Token verification error:', error);
+
+        // Check if the error is due to token expiration
+        if (error.name === 'TokenExpiredError') {
+            return res.status(401).json({ error: 'Expired Token' });
+        }
+
+        // If token is invalid or any other error occurs
+        return res.status(401).json({ error: 'Unauthorized Request' });
     }
     
 }
