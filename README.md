@@ -1,9 +1,13 @@
 # EchoTyper
-Typing Website where you can verse echoes (typing records of other players)
+A Competitive Typing Website where you can verse echoes (user type records)
 
-## Description
-
-## Installation
-## Usage
+## Features
+- Save your typing records
+- User login and authentication
+- Leaderboards
+- Forum Posts
+- Accurate Typing Practice Module
 
 ## Credits
+andriusavenido
+gianev
